@@ -1,20 +1,20 @@
-function averageSalary(employers){
-    let totalSalary = employers.reduce(callbackAverageSalary,0)
+function averageSalary(employers) {
+    let totalSalary = employers.reduce(function (acc, item) {
+        return acc + Number(item.salary)
+    }, 0)
+
     let employersCount = employers.length
     return totalSalary / employersCount
 }
-const callbackAverageSalary = function (acc, item){
-    return acc + Number(item.salary)
-}
 
-function sortBySalary(employers){
-    return employers.sort(function (a,b){
+function sortBySalary(employers) {
+    return employers.sort(function (a, b) {
         return a.salary - b.salary
     })
 }
 
-function filterBySalaryAndAge(employers){
-    return employers.filter(function (item){
+function filterBySalaryAndAge(employers) {
+    return employers.filter(function (item) {
         return Number(item.salary) > 4500 &&
             Number(item.age) > 35;
     })
