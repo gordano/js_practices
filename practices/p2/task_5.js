@@ -8,21 +8,18 @@ const callbackAverageSalary = function (acc, item){
 }
 
 function sortBySalary(employers){
-    return employers.sort(callbackSortBySalary)
-}
-
-const callbackSortBySalary = function (a,b){
-    return a.salary - b.salary
+    return employers.sort(function (a,b){
+        return a.salary - b.salary
+    })
 }
 
 function filterBySalaryAndAge(employers){
-    return employers.filter(callbackfilterBySalaryAndAge)
+    return employers.filter(function (item){
+        return Number(item.salary) > 4500 &&
+            Number(item.age) > 35;
+    })
 }
 
-const callbackfilterBySalaryAndAge = function (item){
-    return Number(item.salary) > 4500 &&
-        Number(item.age) > 35;
-}
 
 const employees = [
     {
