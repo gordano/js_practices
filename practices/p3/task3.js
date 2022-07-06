@@ -1,6 +1,9 @@
 const Calc = function (){
 
-    this.actions = {}
+    this.actions = {
+        '+': (a, b) => a + b ,
+        '-': (a, b) => a - b
+    }
     this.logs = []
 
     this.addOperation = function(operation, formula) {
@@ -8,11 +11,11 @@ const Calc = function (){
     }
 
     this.operation = function(params) {
-        return output(this.runFormula(params))
+        return console.log(this.runFormula(params))
     }
 
     this.history = function(){
-        return output(this.logs)
+        return console.log(this.logs)
     }
 
     this.clearHistory = () => { this.logs = [] }
@@ -36,14 +39,10 @@ const Calc = function (){
             'operands': [operand1, operand2]
         })
     }
-
-    const output = function (text) { console.log(text) }
 }
 
 
 const calculator = new Calc()
-calculator.operation('1 - 2')
-calculator.addOperation('+', (a, b) => a + b)
 calculator.operation('31 + 32')
 calculator.addOperation('/', (a, b) => a / b)
 calculator.operation('1 / 2')

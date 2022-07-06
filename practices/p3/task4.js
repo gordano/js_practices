@@ -1,22 +1,25 @@
 const ticketWindow = {
     events: {},
+    bankTotal: 0,
 
     createEvent: function (eventName, ticketPrice) {
         this.events[eventName] = new Event(eventName, ticketPrice)
     },
     buyTicket: function (eventName) {
+        this.bankTotal += this.events[eventName].price
         return this.events[eventName].addTicket()
     },
     returnTicket: function (ticketID) {
         for (const event in this.events) {
-            if (this.events[event].isEventTicket(ticketID)) {
-                this.events[event].removeTicket(ticketID)
+            if (this.events[event].isEventTicket(ticketID) &&
+                this.events[event].removeTicket(ticketID)) {
+                this.bankTotal -= this.events[event].price
             }
         }
     },
     showEvents: function () {
         for (const event in this.events) {
-            console.log(this.events[event])
+            console.log(this.events[event], this.bankTotal)
         }
     }
 }
@@ -70,9 +73,9 @@ let id3 = ticketWindow.buyTicket('Concert')
 let id4 = ticketWindow.buyTicket('StandUp')
 let id5 = ticketWindow.buyTicket('StandUp')
 
-// ticketWindow.showEvents()
+ticketWindow.showEvents()
 ticketWindow.returnTicket(id2)
-// ticketWindow.showEvents()
+ticketWindow.showEvents()
 
 
 
