@@ -1,7 +1,7 @@
 // Task 1.1
 const array = [1, 2, 3, 4, 5]
 
-Object.getPrototypeOf(array).shuffle = function () {
+Array.prototype.shuffle = function () {
     return this.map(function (item) {
         return {
             value: item,

@@ -1,31 +1,27 @@
-const Rectangle = function (a, b, c, d) {
+const Rectangle = function (a, b) {
     this.a = a
     this.b = b
-    this.c = c
-    this.d = d
 
-    this.square = function () {
+    this.area = function () {
         return this.a * this.b
     }
     this.perimeter = function () {
-        return this.a + this.b + this.c + this.d
+        return 2 * ( this.a + this.b )
     }
 }
-const Square = function (a, b, c, d) {
+const Square = function (a) {
     this.a = a
-    this.b = b
-    this.c = c
-    this.d = d
+    this.b = a
 
 }
 Square.prototype = new Rectangle
 
 
-const rectangle = new Rectangle(6, 2, 6, 2)
-const square = new Square(2, 2, 2, 2)
+const rectangle = new Rectangle(6, 2)
+const square = new Square(2)
 
-console.log(rectangle.square())
-console.log(square.square())
+console.log(rectangle.area())
+console.log(square.area())
 
 console.log(rectangle.perimeter())
 console.log(square.perimeter())
