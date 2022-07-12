@@ -1,6 +1,6 @@
 const Shipyard = function () {
-    this.isSameType = (ship, yard) => {
-        return ship === yard
+    this.isSameType = (type) => {
+        return type === this.type
     }
     this.messages = {
         error: "Sorry we can't do this",
@@ -9,11 +9,15 @@ const Shipyard = function () {
         repair: "Your ship has been repaired"
     }
     this.repaint = function (ship, color) {
-        ship.color = color
-        return console.log(this.messages.repaint + color)
+        if (this.isSameType(ship.type)) {
+            ship.color = color
+            return console.log(this.messages.repaint + color)
+        } else {
+            return console.log(this.messages.error)
+        }
     }
     this.repair = function (ship) {
-        if (this.isSameType(ship.type, this.type)) {
+        if (this.isSameType(ship.type)) {
             ship.broken = false
             return console.log(this.messages.repair)
         } else {
@@ -29,7 +33,7 @@ const SailShipyard = function () {
         return new SailShip(color, mats, sailsArea)
     }
     this.exchange = function (oldShip) {
-        if (this.isSameType(oldShip.type, this.type)) {
+        if (this.isSameType(oldShip.type)) {
             let newShip = this.build(oldShip.color, oldShip.mats, oldShip.sailsArea)
             Object.assign(oldShip, newShip)
             return console.log(this.messages.exchange)
@@ -46,7 +50,7 @@ const MotorShipyard = function () {
         return new MotorShip(color, power, material)
     }
     this.exchange = function (oldShip) {
-        if (this.isSameType(oldShip.type, this.type)) {
+        if (this.isSameType(oldShip.type)) {
             let newShip = this.build(oldShip.color, oldShip.power, oldShip.material)
             Object.assign(oldShip, newShip)
             return console.log(this.messages.exchange)
