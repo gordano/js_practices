@@ -36,8 +36,8 @@ class ChessBoard {
                 d: [null,null,null,null,null,null,null,null],
                 e: [null,null,null,null,null,null,null,null],
                 f: [null,null,null,null,null,null,null,null],
-                g: ['BPawn','BPawn','BPawn','BPawn','BPawn','BPawn','BPawn','BPawn'],
-                h: ['BRook','BKnight','BBishop','BKing','BQueen','BBishop','BKnight','BRook'],
+                g: ['WPawn','WPawn','WPawn','WPawn','WPawn','WPawn','WPawn','WPawn'],
+                h: ['WRook','WKnight','WBishop','WKing','WQueen','WBishop','WKnight','WRook'],
             }
     }
 }
@@ -48,6 +48,11 @@ class Game {
         this.currentPlayer = 'W'
         this.totalCount = 0
         this.history = []
+        this.status = {
+            'white_win': false,
+            'black_win': false,
+            'end_game': false
+        }
     }
 }
 
