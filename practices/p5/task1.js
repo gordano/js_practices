@@ -48,11 +48,7 @@ class Game {
         this.currentPlayer = 'W'
         this.totalCount = 0
         this.history = []
-        this.status = {
-            'white_win': false,
-            'black_win': false,
-            'end_game': false
-        }
+        this.status = ''
     }
 }
 
